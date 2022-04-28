@@ -1,0 +1,78 @@
+﻿@model IEnumerable<oneri_sikayet.Models.Discussion>
+
+<style>
+    table {
+        font-family: Arial,sans-serif;
+        border-collapse: collapse;
+    }
+
+    td, th {
+        border: 1px solid;
+        text-align: left;
+        padding: 8px;
+    }
+</style>
+
+<h4>Öneri Ve Şikayetler</h4>
+<table>
+    <tr>
+        <th>Başlık</th>
+        <th>Konu</th>
+        <th>Fayda</th>
+        <th>Sahibi</th>
+        <th>Açıklama</th>
+        <th>Karar</th>
+        <th>Karar Açıklaması</th>
+        <th>Puan</th>
+        <th>İşlem</th>
+    </tr>
+    @foreach (var row in Model)
+    {
+        <tr>
+            <td>
+                @row.Title
+            </td>
+            <td>
+                @row.Subject
+            </td>
+            <td>
+                @row.Benefit
+            </td>
+            <td>
+                @String.Format("{0} {1}",row.Owner.Name,row.Owner.Surname)
+            </td>
+            <td>
+                @row.Description
+            </td>
+            @if(row.DecisionMade == false)
+            {
+                <td>Karar Yok</td>
+            }
+            else
+            {
+                if(row.Decision)
+                {
+                    <td>Olumlu</td>
+                }
+                else
+                {
+                    <td>Olumsuz</td>
+                }
+            }
+            <td>
+                @row.DecisionDescription
+            </td>
+            @if(row.DecisionMade)
+            { <td>@row.Points</td>}
+            else
+            {
+                <td></td>
+            }
+        <td>
+            <a href=@String.Format("DiscussionManagement/Decision/{0}",row.ID)>Karar Ver</a>
+            <a href=@String.Format("DiscussionManagement/Delete/{0}",row.ID)>Sil</a>
+        </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,61 @@
+﻿@model oneri_sikayet.Models.Discussion;
+
+@{       
+    ViewData["Title"] = "Yeni Öneri";
+}
+
+@using(Html.BeginForm("Send","User",FormMethod.Post))
+{
+<style>
+    #oneri
+    {
+        position: absolute;
+        left: 40%;
+    }
+</style>
+<table id="oneri">
+    <tr>
+        <td></td>
+        <td>
+            <div style="width:500px;"><h3 style="margin-left:25%">Öneri Ekle</h3></div>
+        </td>
+    </tr>
+    <tr>
+        <td> @Html.DisplayNameFor(model => model.Title) </td>
+        <td>
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { style = "width:400px;" } })
+        </td>
+    </tr>
+    <tr>
+        <td> @Html.DisplayNameFor(model => model.Subject) </td>
+        <td>
+            @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { style = "width:400px;" } })
+        </td>
+    </tr>
+    <tr>
+        <td> @Html.DisplayNameFor(model => model.Benefit) </td>
+        <td>
+            @Html.EditorFor(model => model.Benefit, new { htmlAttributes = new { style = "width:400px;" } })
+        </td>
+    </tr>
+    <tr>
+    <tr>
+        <td> @Html.DisplayNameFor(model => model.Description) </td>
+        <td>
+            @Html.EditorFor(model => model.Description,new { htmlAttributes = new { rows = 10,style = "width:400px;" } })
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            @Html.DisplayFor(model => model.Message)
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <input type="submit" />
+        </td>
+    </tr>
+</table>
+}

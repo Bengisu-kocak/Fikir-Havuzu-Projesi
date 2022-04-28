@@ -1,0 +1,58 @@
+﻿@model oneri_sikayet.Models.Discussion
+
+
+<style>
+    table {
+        font-family: Arial,sans-serif;
+        border-collapse: collapse;
+    }
+
+    td, th {
+        border: 1px solid;
+        text-align: left;
+        padding: 8px;
+    }
+</style>
+<h4>Karar Ver</h4>
+<div style="position:absolute;left:40%;">
+    <table>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Title)</td>
+            <td>@Html.DisplayFor(model => model.Title)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Subject)</td>
+            <td>@Html.DisplayFor(model => model.Subject)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.OwnerName)</td>
+            <td>@Html.DisplayFor(model => model.OwnerName)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Benefit)</td>
+            <td>@Html.DisplayFor(model => model.Benefit)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Description)</td>
+            <td>@Html.DisplayFor(model => model.Description)</td>
+        </tr>
+    </table>
+    @using (Html.BeginForm("MakeDecision", "DiscussionManagement", new { ID = Model.ID }, FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Decision)</td>
+                <td>@Html.CheckBoxFor(model => model.Decision)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.DecisionDescription)</td>
+                <td>@Html.EditorFor(model => model.DecisionDescription)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Points)</td>
+                <td>@Html.EditorFor(model => model.Points)</td>
+            </tr>
+        </table>
+        <input type="submit"/>
+    }
+</div>

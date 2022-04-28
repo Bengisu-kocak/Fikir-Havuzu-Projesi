@@ -1,0 +1,76 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@model IEnumerable<oneri_sikayet.Models.Personel>
+
+<style>
+    table {
+        font-family: Arial,sans-serif;
+        border-collapse: collapse;
+    }
+
+    td, th {
+        border: 1px solid;
+        text-align: left;
+        padding: 8px;
+    }
+</style>
+
+<h4>Kullanıcılar</h4>
+<table border="1">
+    <tr>
+        <th>İsim</th>
+        <th>Soyisim</th>
+        <th>Mail</th>
+        <th>TC No</th>
+        <th>Telefon</th>
+        <th>Sicil</th>
+        <th>Yetki</th>
+        <th>Pasif</th>
+        <th>İşlem</th>
+    </tr>
+    @foreach (var row in Model)
+    {
+        <tr>
+            <td>
+                @row.Name
+            </td>
+            <td>
+                @row.Surname
+            </td>
+            <td>
+                @row.Mail
+            </td>
+            <td>
+                @row.Tcno
+            </td>
+            <td>
+                @row.Phone
+            </td>
+            <td>
+                @row.Sicil
+            </td>
+            @if (row.Permission == 1)
+            {
+                <td>Yönetici</td>
+}
+            else
+            {
+                <td>Kullanıcı</td>
+}
+            @if (row.isPassive == true)
+            {
+                <td>Evet</td>
+            }
+            else
+            {
+                <td>Hayır</td>
+            }
+            <td>
+                <a href=@String.Format("UserManagement/Edit/{0}",row.ID)>Düzenle</a>
+                <a href=@String.Format("UserManagement/Delete/{0}",row.ID)>Sil</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<button onclick="location.href='@Url.Action("New", "UserManagement")';">Yeni Kullanıcı Ekle</button>

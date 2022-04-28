@@ -1,0 +1,51 @@
+﻿
+@{       ViewData["Title"] = "Giriş Yap";
+}
+
+@model oneri_sikayet.Models.Personel 
+
+<style>
+    #login {
+        position: absolute;
+        left: 40%;
+        right:auto 40%;
+    }
+</style>
+
+<div id="login">
+    @using (Html.BeginForm("Authorize", "Login", FormMethod.Post))
+    {
+    <table>
+        <tr>
+            <td></td>
+            <div style="width:200px;"><h3 style="margin-left:30%">Giriş Yap</h3></div>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Mail)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Mail)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Password)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Password)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.DisplayFor(model => model.ErrorMessage)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" /></td>
+        </tr>
+    </table>
+    }
+</div>

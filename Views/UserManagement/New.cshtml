@@ -1,0 +1,71 @@
+﻿@model oneri_sikayet.Models.Personel
+
+
+<style>
+    table {
+        font-family: Arial,sans-serif;
+        border-collapse: collapse;
+    }
+
+    #content {
+        position: absolute;
+        left: 40%;
+    }
+
+    td, th {
+        border: 1px solid;
+        text-align: left;
+        padding: 8px;
+    }
+</style>
+
+
+<div id="content">
+        <h4>Kullanıcı Ekle</h4>
+        @using (Html.BeginForm("NewUser", "UserManagement", FormMethod.Post))
+        {
+        <table>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Name)</td>
+                <td>@Html.EditorFor(model => model.Name)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Surname)</td>
+                <td>@Html.EditorFor(model => model.Surname)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Mail)</td>
+                <td>@Html.EditorFor(model => model.Mail)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Password)</td>
+                <td>@Html.EditorFor(model => model.Password)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Tcno)</td>
+                <td>@Html.EditorFor(model => model.Tcno)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Sicil)</td>
+                <td>@Html.EditorFor(model => model.Sicil)</td>
+
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Phone)</td>
+                <td>@Html.EditorFor(model => model.Phone)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.isPassive)</td>
+                <td>@Html.CheckBoxFor(model => model.isPassive)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.isAdmin)</td>
+                <td>@Html.CheckBoxFor(model => model.isAdmin)</td>
+            </tr>
+        </table>
+        @Html.DisplayFor(model => model.ErrorMessage)
+        <br />
+        <input type="submit" />
+    }
+
+</div>
